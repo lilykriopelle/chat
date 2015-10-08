@@ -1,0 +1,29 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/javascripts/chat.js"></script>
+  <script src="/javascripts/chat_ui.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    var socket = io();
+    $(function () {
+      var chat = new window.App.Chat(socket);
+      var chatUi = new window.App.ChatUI(chat);
+    });
+  </script>
+</head>
+<body>
+  <div class="current-user"></div>
+
+  <ul>
+
+  </ul>
+  <form class="send-message">
+    <label>
+      New Message
+      <input class="message-input" type="text" name="message" value="">
+    </label>
+    <button>Send</button>
+  </form>
+
+  <ul class="messages"></ul>
+</body>
