@@ -1,6 +1,7 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="chat.css" media="screen" title="no title" charset="utf-8">
   <script src="/javascripts/chat.js"></script>
   <script src="/javascripts/chat_ui.js"></script>
   <script type="text/javascript" charset="utf-8">
@@ -13,12 +14,8 @@
 </head>
 <body>
   <p>
-  Welcome, <strong class="current-user"></strong>!
+  Welcome, <strong class="current-user"></strong>!  You are in room <strong class="current-room"></strong>.
   </p>
-
-  <!-- <p>
-    Users currently in this room: <strong class="users"></strong>.
-  </p> -->
 
   <div class="errors"></div>
   <form class="send-message">

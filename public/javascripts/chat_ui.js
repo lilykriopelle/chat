@@ -7,6 +7,7 @@
     this.$messageInput = $(".message-input");
     this.$messageList = $(".messages");
     this.$currentUser = $(".current-user");
+    this.$currentRoom = $(".current-room");
     this.$users = $(".users");
     this.$errors = $(".errors");
     $(document).ready(this.bindHandlers.bind(this));
@@ -24,7 +25,14 @@
 
     this.chat.socket.on("nameChangeResult", function(data){
       if (data.success) {
-        this.$currentUser .text(data.message);
+        this.$currentUser.text(data.message);
+      }
+    }.bind(this));
+
+    this.chat.socket.on("roomChangeResult", function(data){
+      if (data.success) {
+        this.$currentRoom.text(data.message);
+        this.$messageList.empty();
       }
     }.bind(this));
 
