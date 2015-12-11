@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
 }
 
-ul, p, h1 {
+ul, p, h1, form {
   margin: 0;
   padding: 0;
   border: 0;
@@ -32,8 +32,11 @@ button, a {
   background: white;
   width: 400px;
   min-height: 500px;
-  border: 5px solid red;
+  border: 1px solid #aaa;
+  border-radius: 3px;
   padding: 15px;
+  background: #aaa;
+
 }
 
 .chatroom .current-room, .chatroom .users {
@@ -41,42 +44,114 @@ button, a {
 }
 
 .chatroom .messages {
-  border: 5px solid green;
+  border: 1px solid #aaa;
+  border-radius: 3px;
   margin: 15px 0;
+  height: 345px;
+  background: white;
+  overflow: scroll;
+  padding: 15px;
 }
 
 .messages li {
   width: 100%;
+  margin: 10px 0;
+}
+
+.messages .left {
+  text-align: left;
+}
+
+.messages .right {
+  text-align: right;
 }
 
 .send-message {
   position: absolute;
   display: block;
-  bottom: -16px;
-  left: 0;
-  width: calc(100% - 2px);
-  height: 30px;
-  border: 1px solid black;
-}
-
-.send-message button {
-  display: block;
-  float: left;
-  width: 50px;
-  height: 100%;
-  margin: 0;
-  border-left: 1px solid black;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 15px;
+  width: calc(100% - 32px);
+  height: 37px;
 }
 
 .send-message input {
   display: block;
   float: left;
-  width: calc(100% - 50px);
+  width: calc(100%);
   height: 100%;
   margin: 0;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 5px;
 }
 
 .announcement {
   font-style: italic;
-  text-align: right;
+  text-align: center;
+  color: #aaa;
+}
+
+.question {
+  position: absolute;
+  z-index: 100;
+  left: 50px;
+  font-size: 40px;
+  padding: 10px 22px;
+  border-radius: 50%;
+  border: 3px solid #aaa;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.question:hover {
+  background: pink;
+}
+
+input:focus, .question:focus {
+  outline: none;
+}
+
+.info {
+  position: absolute;
+  z-index: 50;
+  bottom: 0;
+  width: 400px;
+  background: pink;
+  left: 100%;
+  transition: left .5s;
+  bottom: 50%;
+  transform: translateY(50%)
+}
+
+.info.transitioning {
+  display: block;
+}
+
+.info p {
+  margin: 15px;
+}
+
+.info.displayed {
+  display: block;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  background: rgb(200,200,200);
+}
+
+.screen.on {
+  display: block;
+  opacity: .5;
+  transition: opacity 5s;
 }

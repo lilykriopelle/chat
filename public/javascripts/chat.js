@@ -7,7 +7,7 @@
   };
 
   Chat.prototype.processCommand = function(command, arg) {
-    if (command == "nick") {
+    if (command == "name") {
       this.changeName(arg);
     } else if (command == "join") {
       this.changeRoom(arg);

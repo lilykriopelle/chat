@@ -19,11 +19,48 @@
 
     <ul class="messages"></ul>
 
-    <form class="send-message group">
+    <form class="send-message">
       <input class="message-input" type="text" placeholder="type a message...">
-      <button>Send</button>
     </form>
     <div class="errors"></div>
   </main>
 
+  <button class="question">?</button>
+  <div class="info transitioning">
+    <p>
+      Welcome to the [INSERT NAME OF CHAT HERE]!
+    </p>
+    <p>
+      [NAME] is a chatroom built with Node.js and jQuery by
+      <a href="http://lilykriopelle.com">Lily Riopelle</a>.
+    </p>
+    <p>
+      To change your name, type "/name [NEW NAME]".
+    </p>
+
+    <p>
+      To create a new room or join an existing one,
+      type "/join [NEW ROOM]".
+    </p>
+  </div>
+
+  <div class="screen"></div>
+
+  <script>
+    $(".question").click(function(e){
+      if ($(".info").hasClass("displayed")) {
+        $(".screen").removeClass("on");
+        $(".info").addClass("transitioning");
+        window.setTimeout(function() {
+          $(".info").removeClass("displayed");
+        }, 0);
+      } else {
+        $(".screen").addClass("on");
+        $(".info").addClass("transitioning displayed");
+        window.setTimeout(function() {
+          $(".info").removeClass("transitioning");
+        }, 0);
+      }
+    });
+  </script>
 </body>

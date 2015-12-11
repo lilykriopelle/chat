@@ -6,7 +6,6 @@
     this.chat = chat;
     this.$messageInput = $(".message-input");
     this.$messageList = $(".messages");
-    this.$currentUser = $(".current-user");
     this.$currentRoom = $(".current-room");
     this.$users = $(".users");
     this.$errors = $(".errors");
@@ -58,9 +57,11 @@
       var arg = text.slice(1).split(" ")[1];
       this.chat.processCommand(command, arg);
     } else {
-      this.chat.sendMessage(text);
-      this.$messageInput.val("");
+      if (text !== "") {
+        this.chat.sendMessage(text);
+      }
     }
+    this.$messageInput.val("");
   };
 
   ChatUI.prototype.displayUsers = function(users) {
@@ -68,7 +69,10 @@
   };
 
   ChatUI.prototype.displayMessage = function(data) {
-    var $li = $("<li>").text(data.text + " -- " + data.author);
+    var $p = $("<p>");
+    var $str = $("<strong>").text(data.author + ": ");
+    $p.append($str).append(data.text);
+    var $li = $("<li>").append($p);
     this.$messageList.append($li);
   };
 
