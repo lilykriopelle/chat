@@ -40,7 +40,6 @@
       if (data.success) {
         this.$currentRoom.text(data.message);
         this.$messageList.empty();
-        this.displayUsers(data.users);
       }
     }.bind(this));
 
