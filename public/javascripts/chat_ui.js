@@ -26,7 +26,9 @@
     this.chat.socket.on("nameChangeResult", function(data){
       if (data.success) {
         if (!data.guestName) {
-          var $li = $("<li>").text(data.previous + " changed name to " + data.name);
+          var $li = $("<li>")
+            .text(data.previous + " changed name to " + data.name)
+            .addClass('announcement');
           this.$messageList.append($li);
         }
       }

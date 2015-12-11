@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="chat.css" media="screen" title="no title" charset="utf-8">
   <script src="/javascripts/chat.js"></script>
   <script src="/javascripts/chat_ui.js"></script>
-  <script type="text/javascript" charset="utf-8">
+  <script>
     var socket = io();
     $(function () {
       var chat = new window.App.Chat(socket);
@@ -13,19 +13,17 @@
   </script>
 </head>
 <body>
-  <p>
-  Room: <strong class="current-room"></strong>.
-  </p>
+  <main class="chatroom">
+    <h1 class="current-room"></h1>
+    <div class="users"></div>
 
-  <div class="errors"></div>
-  <div class="users"></div>
-  <ul class="messages"></ul>
-  <form class="send-message">
-    <label>
-      New Message
-      <input class="message-input" type="text" name="message" value="">
-    </label>
-    <button>Send</button>
-  </form>
+    <ul class="messages"></ul>
+
+    <form class="send-message group">
+      <input class="message-input" type="text" placeholder="type a message...">
+      <button>Send</button>
+    </form>
+    <div class="errors"></div>
+  </main>
 
 </body>

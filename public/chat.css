@@ -1,3 +1,82 @@
+body {
+  font-family: sans-serif;
+  background: #eee;
+  box-sizing: border-box;
+}
+
+ul, p, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 ul {
   list-style: none;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+.group:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.chatroom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: white;
+  width: 400px;
+  min-height: 500px;
+  border: 5px solid red;
+  padding: 15px;
+}
+
+.chatroom .current-room, .chatroom .users {
+  text-align: center;
+}
+
+.chatroom .messages {
+  border: 5px solid green;
+  margin: 15px 0;
+}
+
+.messages li {
+  width: 100%;
+}
+
+.send-message {
+  position: absolute;
+  display: block;
+  bottom: -16px;
+  left: 0;
+  width: calc(100% - 2px);
+  height: 30px;
+  border: 1px solid black;
+}
+
+.send-message button {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 100%;
+  margin: 0;
+  border-left: 1px solid black;
+}
+
+.send-message input {
+  display: block;
+  float: left;
+  width: calc(100% - 50px);
+  height: 100%;
+  margin: 0;
+}
+
+.announcement {
+  font-style: italic;
+  text-align: right;
 }
