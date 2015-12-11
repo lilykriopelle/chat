@@ -33,8 +33,8 @@
     }.bind(this));
 
     this.chat.socket.on('usersChanged', function(data) {
-      debugger
-    });
+      this.displayUsers(data.users);
+    }.bind(this));
 
     this.chat.socket.on("roomChangeResult", function(data){
       if (data.success) {
