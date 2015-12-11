@@ -29,7 +29,6 @@ button, a {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background: white;
   width: 400px;
   min-height: 500px;
   border: 1px solid #aaa;
@@ -107,7 +106,7 @@ button, a {
 }
 
 .question:hover {
-  background: pink;
+  background: rgba(255,105,180,.6);
 }
 
 input:focus, .question:focus {
@@ -119,19 +118,29 @@ input:focus, .question:focus {
   z-index: 50;
   bottom: 0;
   width: 400px;
-  background: pink;
+  background: white;
   left: 100%;
   transition: left .5s;
   bottom: 50%;
-  transform: translateY(50%)
+  padding: 15px;
+  transform: translateY(50%);
+  border: 3px solid rgb(255,105,180);
 }
 
 .info.transitioning {
   display: block;
 }
 
+.info h1 {
+  text-align: center;
+}
+
 .info p {
-  margin: 15px;
+  margin: 15px 0;
+}
+
+.info a {
+  color: rgb(255,105,180);
 }
 
 .info.displayed {
