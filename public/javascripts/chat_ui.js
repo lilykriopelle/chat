@@ -25,23 +25,27 @@
 
     this.chat.socket.on("nameChangeResult", function(data){
       if (data.success) {
-        this.$currentUser.text(data.message);
+        if (!data.guestName) {
+          var $li = $("<li>").text(data.previous + " changed name to " + data.name);
+          this.$messageList.append($li);
+        }
       }
     }.bind(this));
+
+    this.chat.socket.on('usersChanged', function(data) {
+      debugger
+    });
 
     this.chat.socket.on("roomChangeResult", function(data){
       if (data.success) {
         this.$currentRoom.text(data.message);
         this.$messageList.empty();
+        this.displayUsers(data.users);
       }
     }.bind(this));
 
     this.chat.socket.on("error", function(error) {
       this.$errors.text(error);
-    }.bind(this));
-
-    this.chat.socket.on("renderUsers", function(data){
-      this.displayUsers(data);
     }.bind(this));
   };
 
@@ -59,7 +63,7 @@
   };
 
   ChatUI.prototype.displayUsers = function(users) {
-    this.$users.text(users);
+    this.$users.text(users.join(", "));
   };
 
   ChatUI.prototype.displayMessage = function(data) {
