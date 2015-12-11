@@ -96,13 +96,12 @@ button, a {
 .question {
   position: absolute;
   z-index: 100;
-  left: 50px;
+  left: 30px;
+  top: 30px;
   font-size: 40px;
   padding: 10px 22px;
   border-radius: 50%;
   border: 3px solid #aaa;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .question:hover {
