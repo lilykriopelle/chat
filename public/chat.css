@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   background: #eee;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 ul, p, h1, form {
