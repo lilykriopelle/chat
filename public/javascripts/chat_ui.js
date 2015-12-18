@@ -39,8 +39,10 @@
 
     this.chat.socket.on("roomChangeResult", function(data){
       if (data.success) {
-        this.$currentRoom.text(data.message);
-        this.$messageList.empty();
+        if (data.socket_id == this.chat.socket.id) {
+          this.$currentRoom.text(data.message);
+          this.$messageList.empty();
+        }
       }
     }.bind(this));
 
