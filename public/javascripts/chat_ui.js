@@ -86,6 +86,11 @@
     var $str = $("<strong>").text(data.author + ": ");
     $p.append($str).append(data.text);
     var $li = $("<li>").append($p);
+    if (data.socket_id == this.chat.socket.id) {
+      $li.addClass("left");
+    } else {
+      $li.addClass("right");
+    }
     this.$messageList.append($li);
   };
 
