@@ -35,6 +35,12 @@
 
     this.chat.socket.on('usersChanged', function(data) {
       this.displayUsers(data.users);
+      if (data.display_announcement) {
+        var $li = $("<li>")
+        .text(data.leaving + " has left the room")
+        .addClass('announcement');
+        this.$messageList.append($li);
+      }
     }.bind(this));
 
     this.chat.socket.on("roomChangeResult", function(data){
@@ -42,6 +48,11 @@
         if (data.socket_id == this.chat.socket.id) {
           this.$currentRoom.text(data.message);
           this.$messageList.empty();
+        } else {
+          var $li = $("<li>")
+            .text(data.user + " has entered the room")
+            .addClass('announcement');
+          this.$messageList.append($li);
         }
       }
     }.bind(this));
