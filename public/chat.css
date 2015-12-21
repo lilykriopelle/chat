@@ -5,7 +5,7 @@ body {
   overflow: hidden;
 }
 
-ul, p, h1, form {
+ul, p, h1, h2, form {
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,18 +25,39 @@ button, a {
   clear: both;
 }
 
+.main {
+  width: 614px;
+  margin: auto;
+}
+
 .chatroom {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 400px;
+  float: left;
   min-height: 500px;
   border: 1px solid #aaa;
   border-radius: 3px;
   padding: 15px;
   background: #aaa;
+}
 
+.rooms-panel {
+  float: left;
+  width: 200px;
+  font-size: 18px;
+}
+
+.rooms-panel h2 {
+  padding: 15px;
+}
+
+.rooms-panel .room a {
+  display: block;
+  padding: 15px;
+  border: 3px solid pink;
+}
+
+.rooms-panel .room-form input {
+  width: 200px;
+  padding: 15px;
 }
 
 .chatroom .current-room, .chatroom .users {
@@ -47,7 +68,8 @@ button, a {
   border: 1px solid #aaa;
   border-radius: 3px;
   margin: 15px 0;
-  height: 345px;
+  height: 300px;
+  width: 350px;
   background: white;
   overflow: scroll;
   padding: 15px;
@@ -67,12 +89,8 @@ button, a {
 }
 
 .send-message {
-  position: absolute;
   display: block;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 15px;
-  width: calc(100% - 32px);
+  width: 100%;
   height: 37px;
 }
 
@@ -95,14 +113,15 @@ button, a {
 }
 
 .question {
-  position: absolute;
+  position: relative;
   z-index: 100;
-  left: 30px;
-  top: 30px;
   font-size: 40px;
   padding: 10px 22px;
   border-radius: 50%;
   border: 3px solid #aaa;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 15px;
 }
 
 .question:hover {

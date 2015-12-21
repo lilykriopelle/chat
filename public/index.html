@@ -13,19 +13,25 @@
   </script>
 </head>
 <body>
-  <main class="chatroom">
-    <h1 class="current-room"></h1>
-    <div class="users"></div>
+  <main class="main group">
+    <div class="chatroom">
+      <h1 class="current-room"></h1>
+      <div class="users"></div>
 
-    <ul class="messages"></ul>
+      <ul class="messages"></ul>
 
-    <form class="send-message">
-      <input class="message-input" type="text" placeholder="type a message...">
-    </form>
-    <div class="errors"></div>
+      <form class="send-message">
+        <input class="message-input" type="text" placeholder="type a message...">
+      </form>
+      <button class="question">?</button>
+      <div class="errors"></div>
+    </div>
+    <div class="rooms-panel">
+      <ul class="rooms-list"></ul>
+      <button class="add-room">+</button>
+    </div>
   </main>
 
-  <button class="question">?</button>
   <div class="info transitioning">
     <h1>
       Welcome!

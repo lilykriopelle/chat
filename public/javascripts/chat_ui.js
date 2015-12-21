@@ -9,6 +9,7 @@
     this.$currentRoom = $(".current-room");
     this.$users = $(".users");
     this.$errors = $(".errors");
+    this.$roomsList = $(".rooms-list");
     $(document).ready(this.bindHandlers.bind(this));
   };
 
@@ -45,6 +46,15 @@
 
     this.chat.socket.on("roomChangeResult", function(data){
       if (data.success) {
+        this.$roomsList.empty();
+        data.rooms.forEach(function(room){
+          if (room === null || room === "") {
+            return true;
+          }
+          var $room = $("<li>").addClass("room");
+          var $a = $("<a>").text(room);
+          this.$roomsList.append($room.append($a));
+        }.bind(this));
         if (data.socket_id == this.chat.socket.id) {
           this.$currentRoom.text(data.message);
           this.$messageList.empty();
@@ -59,6 +69,33 @@
 
     this.chat.socket.on("error", function(error) {
       this.$errors.text(error);
+    }.bind(this));
+
+    $(".rooms-list").on("click", function(event) {
+      if (event.target.text !== undefined && event.target.text !== this.$currentRoom.text()) {
+        this.chat.changeRoom(event.target.text);
+      }
+    }.bind(this));
+
+    $(".rooms-panel").click(function(e) {
+      if ($(e.target).hasClass("add-room")) {
+        var $roomForm = $("<form>").addClass("room-form").append($('<input type="text">').addClass("new-room"));
+        $(".rooms-panel").find(".add-room").replaceWith($roomForm);
+        $roomForm.find("input").focus();
+      }
+    }.bind(this));
+
+    $(".rooms-panel").on("submit", function(e) {
+      e.preventDefault();
+      var roomName = $(e.target).find(".new-room").val();
+      this.chat.changeRoom(roomName);
+      $(e.target).find(".new-room").replaceWith($("<button>").text("+").addClass("add-room"));4
+    }.bind(this));
+
+    $(document).on("focusout", function(e) {
+      if ($(e.target).hasClass("new-room")) {
+        $(e.target).replaceWith($("<button>").text("+").addClass("add-room"));
+      }
     }.bind(this));
   };
 
